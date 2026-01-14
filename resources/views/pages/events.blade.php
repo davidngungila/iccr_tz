@@ -63,6 +63,20 @@
 <section class="py-12 bg-white border-b-2 border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-wrap justify-center gap-4">
+            <button class="view-toggle-btn active px-6 py-3 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-lg font-semibold hover:from-green-700 hover:to-blue-700 transition shadow-md hover:shadow-lg transform hover:scale-105" data-view="list">
+                <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+                </svg>
+                List View
+            </button>
+            <button class="view-toggle-btn px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition" data-view="calendar">
+                <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+                Calendar View
+            </button>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 mt-4">
             <button class="event-filter-btn active px-6 py-3 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-lg font-semibold hover:from-green-700 hover:to-blue-700 transition shadow-md hover:shadow-lg transform hover:scale-105" data-filter="all">
                 All Events
             </button>
@@ -85,8 +99,81 @@
     </div>
 </section>
 
+<!-- Calendar View Section -->
+<section id="calendar-view" class="hidden py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
+    <div class="absolute top-20 right-10 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+    <div class="absolute bottom-20 left-10 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Event <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">Calendar</span>
+            </h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                View all upcoming events in calendar format
+            </p>
+        </div>
+
+        <!-- Calendar Navigation -->
+        <div class="flex items-center justify-between mb-8 bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100">
+            <button id="prev-month" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-semibold hover:bg-gray-200 transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </button>
+            <h3 id="calendar-month-year" class="text-2xl md:text-3xl font-bold text-gray-900"></h3>
+            <button id="next-month" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-semibold hover:bg-gray-200 transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Calendar Grid -->
+        <div class="bg-white rounded-2xl shadow-xl border-2 border-gray-100 overflow-hidden">
+            <!-- Calendar Header -->
+            <div class="grid grid-cols-7 bg-gradient-to-r from-green-600 to-blue-600 text-white">
+                <div class="p-4 text-center font-bold text-sm md:text-base">Sun</div>
+                <div class="p-4 text-center font-bold text-sm md:text-base">Mon</div>
+                <div class="p-4 text-center font-bold text-sm md:text-base">Tue</div>
+                <div class="p-4 text-center font-bold text-sm md:text-base">Wed</div>
+                <div class="p-4 text-center font-bold text-sm md:text-base">Thu</div>
+                <div class="p-4 text-center font-bold text-sm md:text-base">Fri</div>
+                <div class="p-4 text-center font-bold text-sm md:text-base">Sat</div>
+            </div>
+            <!-- Calendar Days -->
+            <div id="calendar-days" class="grid grid-cols-7 gap-1 p-2 bg-gray-50">
+                <!-- Calendar days will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Event Legend -->
+        <div class="mt-8 bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100">
+            <h4 class="text-xl font-bold text-gray-900 mb-4">Event Types</h4>
+            <div class="flex flex-wrap gap-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-4 h-4 rounded bg-blue-500"></div>
+                    <span class="text-gray-700">Worship & Praise</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-4 h-4 rounded bg-purple-500"></div>
+                    <span class="text-gray-700">Retreats</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-4 h-4 rounded bg-orange-500"></div>
+                    <span class="text-gray-700">Conferences</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-4 h-4 rounded bg-teal-500"></div>
+                    <span class="text-gray-700">Training & Workshops</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Upcoming Events Section - Advanced -->
-<section class="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
+<section id="list-view" class="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
     <div class="absolute top-20 right-10 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
     <div class="absolute bottom-20 left-10 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
     
@@ -515,7 +602,7 @@
     </div>
 </section>
 
-<!-- Past Events Gallery Section - Advanced -->
+<!-- Past Events Gallery Section - Enhanced -->
 <section class="py-20 bg-white relative overflow-hidden">
     <div class="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
     
@@ -531,63 +618,273 @@
                 Past Events <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Gallery</span>
             </h2>
             <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                Memories from our previous gatherings
+                Memories and highlights from our previous gatherings
             </p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="group relative h-64 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                <img src="{{ asset('images/06.jpg') }}" alt="Event Photo 1" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2">Worship Gathering</h3>
-                    <p class="text-sm text-blue-100">January 2025</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Past Event 1 -->
+            <div class="group bg-white rounded-2xl shadow-lg border-2 border-gray-100 overflow-hidden hover:shadow-2xl hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-2">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="{{ asset('images/06.jpg') }}" alt="Easter Conference 2025" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    <div class="absolute top-4 left-4 px-3 py-1 bg-blue-600 text-white rounded-full text-xs font-semibold">
+                        Conference
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        <span class="text-sm text-gray-600 font-medium">March 28-30, 2025</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition">Easter Conference 2025</h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        A powerful 3-day conference celebrating the resurrection of Christ with worship, teaching, and fellowship. Over 800 students gathered from across Tanzania.
+                    </p>
+                    <div class="flex flex-wrap gap-4 mb-4">
+                        <div class="flex items-center gap-1 text-sm text-gray-600">
+                            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span>Dar es Salaam</span>
+                        </div>
+                        <div class="flex items-center gap-1 text-sm text-gray-600">
+                            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            </svg>
+                            <span>800+ Participants</span>
+                        </div>
+                    </div>
+                    <a href="{{ route('media') }}" class="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition">
+                        <span>View Gallery</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
-            
-            <div class="group relative h-64 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                <img src="{{ asset('images/07.jpg') }}" alt="Event Photo 2" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2">Spiritual Camp</h3>
-                    <p class="text-sm text-purple-100">February 2025</p>
+
+            <!-- Past Event 2 -->
+            <div class="group bg-white rounded-2xl shadow-lg border-2 border-gray-100 overflow-hidden hover:shadow-2xl hover:border-purple-300 transition-all duration-300 transform hover:-translate-y-2">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="{{ asset('images/07.jpg') }}" alt="Regional Spiritual Camp" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    <div class="absolute top-4 left-4 px-3 py-1 bg-purple-600 text-white rounded-full text-xs font-semibold">
+                        Retreat
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        <span class="text-sm text-gray-600 font-medium">February 15-17, 2025</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-purple-600 transition">Regional Spiritual Camp</h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        A transformative 3-day camp in Dodoma focusing on spiritual growth, prayer, and community building. Students experienced deep worship and powerful teachings.
+                    </p>
+                    <div class="flex flex-wrap gap-4 mb-4">
+                        <div class="flex items-center gap-1 text-sm text-gray-600">
+                            <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span>Dodoma</span>
+                        </div>
+                        <div class="flex items-center gap-1 text-sm text-gray-600">
+                            <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            </svg>
+                            <span>350+ Participants</span>
+                        </div>
+                    </div>
+                    <a href="{{ route('media') }}" class="inline-flex items-center gap-2 text-purple-600 font-semibold hover:text-purple-700 transition">
+                        <span>View Gallery</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
-            
-            <div class="group relative h-64 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                <img src="{{ asset('images/08.jpg') }}" alt="Event Photo 3" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2">Prayer Retreat</h3>
-                    <p class="text-sm text-green-100">March 2025</p>
+
+            <!-- Past Event 3 -->
+            <div class="group bg-white rounded-2xl shadow-lg border-2 border-gray-100 overflow-hidden hover:shadow-2xl hover:border-green-300 transition-all duration-300 transform hover:-translate-y-2">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="{{ asset('images/08.jpg') }}" alt="Usiku wa Sifa" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    <div class="absolute top-4 left-4 px-3 py-1 bg-green-600 text-white rounded-full text-xs font-semibold">
+                        Worship Night
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        <span class="text-sm text-gray-600 font-medium">January 18, 2025</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition">Usiku wa Sifa - Dar es Salaam</h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        An unforgettable night of praise and worship featuring powerful music, prophetic declarations, and an atmosphere charged with the Holy Spirit. Over 600 students attended.
+                    </p>
+                    <div class="flex flex-wrap gap-4 mb-4">
+                        <div class="flex items-center gap-1 text-sm text-gray-600">
+                            <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span>Dar es Salaam</span>
+                        </div>
+                        <div class="flex items-center gap-1 text-sm text-gray-600">
+                            <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            </svg>
+                            <span>600+ Participants</span>
+                        </div>
+                    </div>
+                    <a href="{{ route('media') }}" class="inline-flex items-center gap-2 text-green-600 font-semibold hover:text-green-700 transition">
+                        <span>View Gallery</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
-            
-            <div class="group relative h-64 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                <img src="{{ asset('images/09.jpg') }}" alt="Event Photo 4" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2">Bible Study</h3>
-                    <p class="text-sm text-yellow-100">April 2025</p>
+
+            <!-- Past Event 4 -->
+            <div class="group bg-white rounded-2xl shadow-lg border-2 border-gray-100 overflow-hidden hover:shadow-2xl hover:border-yellow-300 transition-all duration-300 transform hover:-translate-y-2">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="{{ asset('images/09.jpg') }}" alt="Leadership Training" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    <div class="absolute top-4 left-4 px-3 py-1 bg-yellow-600 text-white rounded-full text-xs font-semibold">
+                        Training
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <svg class="w-4 h-4 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        <span class="text-sm text-gray-600 font-medium">December 10-14, 2024</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-yellow-600 transition">Leadership Development Workshop</h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        A comprehensive 5-day leadership training program for chapter leaders. Participants learned practical skills in ministry leadership, event planning, and discipleship.
+                    </p>
+                    <div class="flex flex-wrap gap-4 mb-4">
+                        <div class="flex items-center gap-1 text-sm text-gray-600">
+                            <svg class="w-4 h-4 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span>Dar es Salaam</span>
+                        </div>
+                        <div class="flex items-center gap-1 text-sm text-gray-600">
+                            <svg class="w-4 h-4 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            </svg>
+                            <span>120 Leaders</span>
+                        </div>
+                    </div>
+                    <a href="{{ route('media') }}" class="inline-flex items-center gap-2 text-yellow-600 font-semibold hover:text-yellow-700 transition">
+                        <span>View Gallery</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
+
+            <!-- Past Event 5 -->
+            <div class="group bg-white rounded-2xl shadow-lg border-2 border-gray-100 overflow-hidden hover:shadow-2xl hover:border-red-300 transition-all duration-300 transform hover:-translate-y-2">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="{{ asset('images/10.jpg') }}" alt="Fellowship Night" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    <div class="absolute top-4 left-4 px-3 py-1 bg-red-600 text-white rounded-full text-xs font-semibold">
+                        Fellowship
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        <span class="text-sm text-gray-600 font-medium">November 22, 2024</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition">Campus Fellowship Night</h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        A vibrant evening of fellowship, games, and testimonies. Students from multiple campuses came together to build relationships and share their faith journeys.
+                    </p>
+                    <div class="flex flex-wrap gap-4 mb-4">
+                        <div class="flex items-center gap-1 text-sm text-gray-600">
+                            <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span>Mwanza</span>
+                        </div>
+                        <div class="flex items-center gap-1 text-sm text-gray-600">
+                            <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            </svg>
+                            <span>250+ Participants</span>
+                        </div>
+                    </div>
+                    <a href="{{ route('media') }}" class="inline-flex items-center gap-2 text-red-600 font-semibold hover:text-red-700 transition">
+                        <span>View Gallery</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
-            
-            <div class="group relative h-64 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                <img src="{{ asset('images/10.jpg') }}" alt="Event Photo 5" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2">Fellowship Night</h3>
-                    <p class="text-sm text-red-100">May 2025</p>
-            </div>
-            </div>
-            
-            <div class="group relative h-64 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                <img src="{{ asset('images/11.jpg') }}" alt="Event Photo 6" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2">Leadership Summit</h3>
-                    <p class="text-sm text-indigo-100">June 2025</p>
-            </div>
+
+            <!-- Past Event 6 -->
+            <div class="group bg-white rounded-2xl shadow-lg border-2 border-gray-100 overflow-hidden hover:shadow-2xl hover:border-indigo-300 transition-all duration-300 transform hover:-translate-y-2">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="{{ asset('images/11.jpg') }}" alt="Bible Study Conference" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                    <div class="absolute top-4 left-4 px-3 py-1 bg-indigo-600 text-white rounded-full text-xs font-semibold">
+                        Conference
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        <span class="text-sm text-gray-600 font-medium">October 5-6, 2024</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-indigo-600 transition">Bible Study & Discipleship Conference</h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        A 2-day conference focused on deepening biblical knowledge and discipleship skills. Featured workshops on Bible study methods, small group leadership, and spiritual mentoring.
+                    </p>
+                    <div class="flex flex-wrap gap-4 mb-4">
+                        <div class="flex items-center gap-1 text-sm text-gray-600">
+                            <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span>Mbeya</span>
+                        </div>
+                        <div class="flex items-center gap-1 text-sm text-gray-600">
+                            <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            </svg>
+                            <span>400+ Participants</span>
+                        </div>
+                    </div>
+                    <a href="{{ route('media') }}" class="inline-flex items-center gap-2 text-indigo-600 font-semibold hover:text-indigo-700 transition">
+                        <span>View Gallery</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
         
@@ -908,6 +1205,115 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
+    });
+
+    // View Toggle Functionality (List/Calendar)
+    const viewToggleButtons = document.querySelectorAll('.view-toggle-btn');
+    const listView = document.getElementById('events-container').closest('section');
+    const calendarView = document.getElementById('calendar-view');
+    
+    viewToggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const view = this.getAttribute('data-view');
+            
+            // Update active button
+            viewToggleButtons.forEach(btn => {
+                if (btn === this) {
+                    btn.classList.remove('bg-gray-200', 'text-gray-700');
+                    btn.classList.add('bg-gradient-to-r', 'from-green-600', 'to-blue-600', 'text-white');
+                } else {
+                    btn.classList.remove('bg-gradient-to-r', 'from-green-600', 'to-blue-600', 'text-white');
+                    btn.classList.add('bg-gray-200', 'text-gray-700');
+                }
+            });
+            
+            // Toggle views
+            if (view === 'calendar') {
+                listView.classList.add('hidden');
+                calendarView.classList.remove('hidden');
+                renderCalendar();
+            } else {
+                listView.classList.remove('hidden');
+                calendarView.classList.add('hidden');
+            }
+        });
+    });
+
+    // Calendar Functionality
+    let currentDate = new Date();
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    
+    // Event data for calendar
+    const events = [
+        { date: new Date(2026, 0, 25), title: 'Night of Praise', category: 'worship', color: 'bg-blue-500' },
+        { date: new Date(2026, 1, 10), title: 'Regional Spiritual Camp', category: 'retreat', color: 'bg-purple-500' },
+        { date: new Date(2026, 2, 1), title: 'Saturday Prayer Retreat', category: 'retreat', color: 'bg-green-500' },
+        { date: new Date(2026, 2, 15), title: 'Open Gate Camp', category: 'conference', color: 'bg-orange-500' },
+        { date: new Date(2026, 3, 5), title: 'Perfect Vision', category: 'conference', color: 'bg-indigo-500' },
+        { date: new Date(2026, 4, 20), title: 'Usiku wa Sifa', category: 'worship', color: 'bg-yellow-500' },
+        { date: new Date(2026, 5, 10), title: 'NexGen Camp', category: 'training', color: 'bg-teal-500' },
+    ];
+
+    function renderCalendar() {
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+        
+        // Update month/year display
+        document.getElementById('calendar-month-year').textContent = `${monthNames[month]} ${year}`;
+        
+        // Get first day of month and number of days
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        
+        // Clear calendar
+        const calendarDays = document.getElementById('calendar-days');
+        calendarDays.innerHTML = '';
+        
+        // Add empty cells for days before month starts
+        for (let i = 0; i < firstDay; i++) {
+            const emptyCell = document.createElement('div');
+            emptyCell.className = 'p-2 min-h-[80px] bg-gray-50';
+            calendarDays.appendChild(emptyCell);
+        }
+        
+        // Add days of month
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayCell = document.createElement('div');
+            dayCell.className = 'p-2 min-h-[80px] bg-white border border-gray-200 hover:bg-gray-50 transition';
+            
+            const dayNumber = document.createElement('div');
+            dayNumber.className = 'font-bold text-gray-900 mb-1';
+            dayNumber.textContent = day;
+            dayCell.appendChild(dayNumber);
+            
+            // Add events for this day
+            const dayEvents = events.filter(event => {
+                return event.date.getFullYear() === year &&
+                       event.date.getMonth() === month &&
+                       event.date.getDate() === day;
+            });
+            
+            dayEvents.forEach(event => {
+                const eventDot = document.createElement('div');
+                eventDot.className = `${event.color} text-white text-xs px-2 py-1 rounded mb-1 truncate cursor-pointer hover:opacity-80 transition`;
+                eventDot.textContent = event.title;
+                eventDot.title = event.title;
+                dayCell.appendChild(eventDot);
+            });
+            
+            calendarDays.appendChild(dayCell);
+        }
+    }
+
+    // Calendar navigation
+    document.getElementById('prev-month')?.addEventListener('click', function() {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar();
+    });
+
+    document.getElementById('next-month')?.addEventListener('click', function() {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar();
     });
 });
 </script>
