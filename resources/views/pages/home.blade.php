@@ -840,6 +840,104 @@
             <a href="{{ route('media') }}" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-xl font-bold text-lg hover:from-green-700 hover:to-blue-700 transition shadow-xl hover:shadow-2xl transform hover:scale-105">
                 <span>View All News</span>
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+</section>
+
+<!-- Video Gallery Slider Section -->
+<section class="py-20 bg-gradient-to-br from-gray-50 via-white to-green-50 relative overflow-hidden">
+    <div class="absolute top-20 right-10 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+    <div class="absolute bottom-20 left-10 w-64 h-64 bg-green-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-red-100 text-red-700 rounded-full text-sm font-semibold mb-6">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                <span>Video Gallery</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+                Featured <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">Videos</span>
+            </h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Watch our latest worship sessions, events, and ministry content
+            </p>
+        </div>
+        
+        <!-- Video Slider Container -->
+        <div class="relative">
+            <div id="video-slider" class="overflow-hidden">
+                <div id="video-slider-track" class="flex transition-transform duration-500 ease-in-out" style="transform: translateX(0px);">
+                    @if(isset($home_videos) && count($home_videos) > 0)
+                        @foreach($home_videos as $video)
+                        <div class="video-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-4">
+                            <div class="group bg-white rounded-xl shadow-lg border-2 border-gray-100 overflow-hidden hover:shadow-2xl hover:border-green-300 transition-all duration-300">
+                                <div class="relative aspect-video bg-black">
+                                    <iframe 
+                                        class="w-full h-full" 
+                                        src="https://www.youtube.com/embed/{{ $video['video_id'] }}?rel=0&modestbranding=1" 
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen
+                                        loading="lazy">
+                                    </iframe>
+                                </div>
+                                <div class="p-4">
+                                    <h3 class="text-base font-bold text-gray-900 mb-1 group-hover:text-green-600 transition line-clamp-2">{{ $video['title'] ?? 'Video' }}</h3>
+                                    <p class="text-xs text-gray-600 line-clamp-2">{{ $video['description'] ?? '' }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    @else
+                        <!-- Placeholder videos if none available -->
+                        @for($i = 0; $i < 6; $i++)
+                        <div class="video-slide flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-4">
+                            <div class="group bg-white rounded-xl shadow-lg border-2 border-gray-100 overflow-hidden">
+                                <div class="relative aspect-video bg-gradient-to-br from-green-600 to-blue-600">
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <svg class="w-16 h-16 text-white opacity-50" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="p-4">
+                                    <h3 class="text-base font-bold text-gray-900 mb-1">Video Coming Soon</h3>
+                                    <p class="text-xs text-gray-600">Check back soon for new content</p>
+                                </div>
+                            </div>
+                        </div>
+                        @endfor
+                    @endif
+                </div>
+            </div>
+            
+            <!-- Navigation Buttons -->
+            <button id="video-slider-prev" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition z-10 border-2 border-gray-200 hover:border-green-500">
+                <svg class="w-6 h-6 text-gray-700 hover:text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+            </button>
+            <button id="video-slider-next" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition z-10 border-2 border-gray-200 hover:border-green-500">
+                <svg class="w-6 h-6 text-gray-700 hover:text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Dots Indicator -->
+        <div id="video-slider-dots" class="flex justify-center gap-2 mt-8">
+            <!-- Dots will be generated by JavaScript -->
+        </div>
+        
+        <div class="text-center mt-12">
+            <a href="{{ route('media') }}" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-xl font-bold text-lg hover:from-green-700 hover:to-blue-700 transition shadow-xl hover:shadow-2xl transform hover:scale-105">
+                <span>View All Videos</span>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                 </svg>
             </a>
@@ -884,8 +982,160 @@
     </div>
 </section>
 
+<!-- Sponsors Section - Moving Animation -->
+<section class="py-16 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-semibold mb-6">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                </svg>
+                <span>Our Partners & Sponsors</span>
+            </div>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">Partners</span>
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                We are grateful for the support of our partners and sponsors
+            </p>
+        </div>
+        
+        <!-- Moving Sponsors Container -->
+        <div class="relative overflow-hidden">
+            <div class="sponsors-track flex gap-8 items-center">
+                <!-- First set of sponsors -->
+                <div class="sponsors-slide flex gap-8 items-center flex-shrink-0">
+                    @php
+                        $sponsors = [
+                            [
+                                'name' => 'Catholic Diocese of Dar es Salaam',
+                                'icon' => 'church'
+                            ],
+                            [
+                                'name' => 'Tanzania Episcopal Conference',
+                                'icon' => 'users'
+                            ],
+                            [
+                                'name' => 'Catholic Charismatic Renewal Tanzania',
+                                'icon' => 'sparkles'
+                            ],
+                            [
+                                'name' => 'University of Dar es Salaam',
+                                'icon' => 'academic-cap'
+                            ],
+                            [
+                                'name' => 'St. Joseph University',
+                                'icon' => 'academic-cap'
+                            ],
+                            [
+                                'name' => 'Tumaini University',
+                                'icon' => 'academic-cap'
+                            ],
+                            [
+                                'name' => 'Marian University',
+                                'icon' => 'academic-cap'
+                            ],
+                            [
+                                'name' => 'St. Augustine University',
+                                'icon' => 'academic-cap'
+                            ],
+                        ];
+                        
+                        $iconPaths = [
+                            'church' => 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+                            'users' => 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z',
+                            'sparkles' => 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z',
+                            'academic-cap' => 'M12 14l9-5-9-5-9 5 9 5z M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z'
+                        ];
+                    @endphp
+                    
+                    @foreach($sponsors as $index => $sponsor)
+                    <div class="sponsor-item flex-shrink-0 w-48 h-32 bg-white rounded-xl shadow-md border-2 border-gray-100 hover:shadow-xl hover:border-green-300 transition-all duration-300 flex items-center justify-center p-4">
+                        <div class="text-center w-full">
+                            <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-500 rounded-xl flex items-center justify-center mb-3 mx-auto hover:scale-110 transition">
+                                @if($sponsor['icon'] === 'church')
+                                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                    </svg>
+                                @elseif($sponsor['icon'] === 'users')
+                                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                                    </svg>
+                                @elseif($sponsor['icon'] === 'sparkles')
+                                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                                    </svg>
+                                @elseif($sponsor['icon'] === 'academic-cap')
+                                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                                    </svg>
+                                @endif
+                            </div>
+                            <p class="text-xs font-semibold text-gray-700 line-clamp-2 leading-tight">{{ $sponsor['name'] }}</p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                
+                <!-- Duplicate set for seamless loop -->
+                <div class="sponsors-slide flex gap-8 items-center flex-shrink-0" aria-hidden="true">
+                    @foreach($sponsors as $index => $sponsor)
+                    <div class="sponsor-item flex-shrink-0 w-48 h-32 bg-white rounded-xl shadow-md border-2 border-gray-100 hover:shadow-xl hover:border-green-300 transition-all duration-300 flex items-center justify-center p-4">
+                        <div class="text-center w-full">
+                            <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-500 rounded-xl flex items-center justify-center mb-3 mx-auto hover:scale-110 transition">
+                                @if($sponsor['icon'] === 'church')
+                                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                    </svg>
+                                @elseif($sponsor['icon'] === 'users')
+                                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                                    </svg>
+                                @elseif($sponsor['icon'] === 'sparkles')
+                                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                                    </svg>
+                                @elseif($sponsor['icon'] === 'academic-cap')
+                                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                                    </svg>
+                                @endif
+                            </div>
+                            <p class="text-xs font-semibold text-gray-700 line-clamp-2 leading-tight">{{ $sponsor['name'] }}</p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 @push('scripts')
 <style>
+    /* Sponsors Moving Animation */
+    .sponsors-track {
+        animation: scrollSponsors 30s linear infinite;
+        width: fit-content;
+    }
+    
+    @keyframes scrollSponsors {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+    
+    .sponsors-track:hover {
+        animation-play-state: paused;
+    }
+    
     /* Animation styles for different slide movements */
     .slide-fade {
         animation: fadeIn 1s ease-in-out;
@@ -1044,6 +1294,108 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Start auto-slide
     startAutoSlide();
+});
+
+// Video Slider Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.getElementById('video-slider-track');
+    const prevBtn = document.getElementById('video-slider-prev');
+    const nextBtn = document.getElementById('video-slider-next');
+    const dotsContainer = document.getElementById('video-slider-dots');
+    
+    if (!slider || !prevBtn || !nextBtn) return;
+    
+    const slides = slider.querySelectorAll('.video-slide');
+    const totalSlides = slides.length;
+    const slidesPerView = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+    const totalPages = Math.ceil(totalSlides / slidesPerView);
+    let currentPage = 0;
+    
+    // Calculate slide width based on viewport
+    function getSlideWidth() {
+        if (window.innerWidth >= 1024) return 33.333; // 3 slides
+        if (window.innerWidth >= 768) return 50; // 2 slides
+        return 100; // 1 slide
+    }
+    
+    // Create dots
+    for (let i = 0; i < totalPages; i++) {
+        const dot = document.createElement('button');
+        dot.className = `w-3 h-3 rounded-full transition ${i === 0 ? 'bg-green-600' : 'bg-gray-300'}`;
+        dot.addEventListener('click', () => goToPage(i));
+        dotsContainer.appendChild(dot);
+    }
+    
+    function updateSlider() {
+        const slideWidth = getSlideWidth();
+        const translateX = -(currentPage * slideWidth);
+        slider.style.transform = `translateX(${translateX}%)`;
+        
+        // Update dots
+        const dots = dotsContainer.querySelectorAll('button');
+        dots.forEach((dot, index) => {
+            if (index === currentPage) {
+                dot.classList.remove('bg-gray-300');
+                dot.classList.add('bg-green-600');
+            } else {
+                dot.classList.remove('bg-green-600');
+                dot.classList.add('bg-gray-300');
+            }
+        });
+    }
+    
+    function goToPage(page) {
+        if (page < 0) page = totalPages - 1;
+        if (page >= totalPages) page = 0;
+        currentPage = page;
+        updateSlider();
+    }
+    
+    function nextPage() {
+        goToPage(currentPage + 1);
+    }
+    
+    function prevPage() {
+        goToPage(currentPage - 1);
+    }
+    
+    nextBtn.addEventListener('click', nextPage);
+    prevBtn.addEventListener('click', prevPage);
+    
+    // Auto-play slider
+    let autoPlayInterval = setInterval(nextPage, 5000);
+    
+    // Pause on hover
+    const sliderContainer = document.getElementById('video-slider');
+    if (sliderContainer) {
+        sliderContainer.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+        sliderContainer.addEventListener('mouseleave', () => {
+            autoPlayInterval = setInterval(nextPage, 5000);
+        });
+    }
+    
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            currentPage = 0;
+            updateSlider();
+        }, 250);
+    });
+    
+    // Initialize
+    updateSlider();
+});
+
+// Sponsors Animation - Ensure continuous scroll
+document.addEventListener('DOMContentLoaded', function() {
+    const sponsorsTrack = document.querySelector('.sponsors-track');
+    if (sponsorsTrack) {
+        // The CSS animation handles the movement
+        // This ensures it works on all browsers
+        sponsorsTrack.style.animation = 'scrollSponsors 30s linear infinite';
+    }
 });
 
 </script>

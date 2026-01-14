@@ -132,6 +132,10 @@
             transform: scale(0.95) translateY(-10px) translateX(-50%);
             transition: all 0.3s ease-out;
             pointer-events: none;
+            position: absolute;
+            left: 50%;
+            transform-origin: top center;
+            margin-left: 0;
         }
         
         .nav-dropdown-parent:hover .nav-dropdown {
@@ -173,11 +177,19 @@
             transform: scale(1) translateY(0) translateX(-50%);
         }
         
-        /* Ensure dropdowns don't overflow screen */
-        .nav-dropdown {
-            max-width: calc(100vw - 2rem);
-            left: 50% !important;
-            right: auto !important;
+        /* Center dropdowns relative to button */
+        .nav-dropdown-parent {
+            position: relative;
+        }
+        
+        /* Desktop dropdown positioning - centered but starting from button */
+        @media (min-width: 769px) {
+            .nav-dropdown {
+                top: 100% !important;
+                left: 50% !important;
+                right: auto !important;
+                margin-left: 0 !important;
+            }
         }
         
         /* Responsive dropdown positioning */
@@ -185,9 +197,11 @@
             .nav-dropdown {
                 left: 0 !important;
                 right: 0 !important;
+                top: 100% !important;
                 transform: scale(0.95) translateY(-10px) !important;
                 width: 100vw !important;
                 max-width: 100vw !important;
+                margin-left: 0 !important;
             }
             
             .nav-dropdown-parent:hover .nav-dropdown {
@@ -273,40 +287,27 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                             </svg>
                         </button>
-                        <div class="nav-dropdown absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[90vw] max-w-4xl bg-white rounded-xl shadow-2xl border-2 border-gray-100 z-[100] overflow-hidden">
-                            <div class="p-6">
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                    <a href="{{ route('about') }}" class="group flex items-start gap-6 p-6 rounded-xl hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 transition-all duration-300 {{ request()->routeIs('about') ? 'bg-gradient-to-r from-green-50 to-blue-50' : '' }}">
-                                        <div class="flex-shrink-0 w-24 h-24 rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition">
-                                            <img src="{{ asset('images/03.jpg') }}" alt="About Us" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <h3 class="text-xl font-bold text-gray-900 group-hover:text-green-600 transition mb-2">About Us</h3>
-                                            <p class="text-base text-gray-600 leading-relaxed">Learn about our mission, vision, and the community we're building across Tanzania. Discover our history, values, and the impact we're making in Catholic student communities.</p>
-                                            <div class="mt-3 flex items-center gap-2 text-green-600 opacity-0 group-hover:opacity-100 transition">
-                                                <span class="text-base font-semibold">Learn more</span>
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a href="{{ route('faq') }}" class="group flex items-start gap-6 p-6 rounded-xl hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 transition-all duration-300 {{ request()->routeIs('faq') ? 'bg-gradient-to-r from-green-50 to-blue-50' : '' }}">
-                                        <div class="flex-shrink-0 w-24 h-24 rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition">
-                                            <img src="{{ asset('images/04.jpg') }}" alt="FAQ" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <h3 class="text-xl font-bold text-gray-900 group-hover:text-green-600 transition mb-2">FAQ</h3>
-                                            <p class="text-base text-gray-600 leading-relaxed">Find answers to frequently asked questions about joining and participating in our community. Get information about membership, events, and how to get involved.</p>
-                                            <div class="mt-3 flex items-center gap-2 text-green-600 opacity-0 group-hover:opacity-100 transition">
-                                                <span class="text-base font-semibold">View FAQs</span>
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
+                        <div class="nav-dropdown top-full mt-2 w-96 bg-white rounded-xl shadow-2xl border-2 border-gray-100 z-[100] overflow-hidden">
+                            <div class="p-4">
+                                <a href="{{ route('about') }}" class="group flex items-start gap-3 p-3 rounded-lg hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 transition-all duration-300 {{ request()->routeIs('about') ? 'bg-gradient-to-r from-green-50 to-blue-50' : '' }}">
+                                    <div class="flex-shrink-0 w-12 h-12 rounded-lg overflow-hidden shadow-md group-hover:shadow-lg transition">
+                                        <img src="{{ asset('images/03.jpg') }}" alt="About Us" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <h3 class="text-sm font-bold text-gray-900 group-hover:text-green-600 transition mb-1">About Us</h3>
+                                        <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">Learn about our mission, vision, and community.</p>
+                                    </div>
+                                </a>
+                                <div class="my-2 border-t border-gray-100"></div>
+                                <a href="{{ route('faq') }}" class="group flex items-start gap-3 p-3 rounded-lg hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 transition-all duration-300 {{ request()->routeIs('faq') ? 'bg-gradient-to-r from-green-50 to-blue-50' : '' }}">
+                                    <div class="flex-shrink-0 w-12 h-12 rounded-lg overflow-hidden shadow-md group-hover:shadow-lg transition">
+                                        <img src="{{ asset('images/04.jpg') }}" alt="FAQ" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <h3 class="text-sm font-bold text-gray-900 group-hover:text-green-600 transition mb-1">FAQ</h3>
+                                        <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">Find answers to frequently asked questions.</p>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -319,60 +320,36 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                             </svg>
                         </button>
-                        <div class="nav-dropdown absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[90vw] max-w-5xl bg-white rounded-xl shadow-2xl border-2 border-gray-100 z-[100] overflow-hidden">
-                            <div class="p-6">
-                                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                                    <a href="{{ route('ministries') }}" class="group flex flex-col p-5 rounded-xl hover:bg-gradient-to-br hover:from-green-50 hover:to-blue-50 transition-all duration-300 border-2 border-transparent hover:border-green-200 {{ request()->routeIs('ministries') ? 'bg-gradient-to-br from-green-50 to-blue-50 border-green-200' : '' }}">
-                                        <div class="w-full h-32 rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition mb-4">
+                        <div class="nav-dropdown top-full mt-2 w-[500px] bg-white rounded-xl shadow-2xl border-2 border-gray-100 z-[100] overflow-hidden">
+                            <div class="p-4">
+                                <div class="grid grid-cols-2 gap-3">
+                                    <a href="{{ route('ministries') }}" class="group flex flex-col p-3 rounded-lg hover:bg-gradient-to-br hover:from-green-50 hover:to-blue-50 transition-all duration-300 border border-transparent hover:border-green-200 {{ request()->routeIs('ministries') ? 'bg-gradient-to-br from-green-50 to-blue-50 border-green-200' : '' }}">
+                                        <div class="w-full h-16 rounded-lg overflow-hidden shadow-md group-hover:shadow-lg transition mb-2">
                                             <img src="{{ asset('images/05.jpg') }}" alt="Ministries" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                         </div>
-                                        <h3 class="text-lg font-bold text-gray-900 group-hover:text-green-600 transition mb-2">Ministries</h3>
-                                        <p class="text-sm text-gray-600 leading-relaxed mb-3">Explore our prayer, worship, and evangelization ministries that serve our community.</p>
-                                        <div class="flex items-center gap-2 text-green-600 opacity-0 group-hover:opacity-100 transition mt-auto">
-                                            <span class="text-sm font-semibold">Explore</span>
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                            </svg>
-                                        </div>
+                                        <h3 class="text-xs font-bold text-gray-900 group-hover:text-green-600 transition mb-1">Ministries</h3>
+                                        <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">Explore our ministries</p>
                                     </a>
-                                    <a href="{{ route('events') }}" class="group flex flex-col p-5 rounded-xl hover:bg-gradient-to-br hover:from-green-50 hover:to-blue-50 transition-all duration-300 border-2 border-transparent hover:border-green-200 {{ request()->routeIs('events') ? 'bg-gradient-to-br from-green-50 to-blue-50 border-green-200' : '' }}">
-                                        <div class="w-full h-32 rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition mb-4">
+                                    <a href="{{ route('events') }}" class="group flex flex-col p-3 rounded-lg hover:bg-gradient-to-br hover:from-green-50 hover:to-blue-50 transition-all duration-300 border border-transparent hover:border-green-200 {{ request()->routeIs('events') ? 'bg-gradient-to-br from-green-50 to-blue-50 border-green-200' : '' }}">
+                                        <div class="w-full h-16 rounded-lg overflow-hidden shadow-md group-hover:shadow-lg transition mb-2">
                                             <img src="{{ asset('images/06.jpg') }}" alt="Events" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                         </div>
-                                        <h3 class="text-lg font-bold text-gray-900 group-hover:text-green-600 transition mb-2">Events</h3>
-                                        <p class="text-sm text-gray-600 leading-relaxed mb-3">Join our spiritual gatherings, retreats, and conferences across Tanzania.</p>
-                                        <div class="flex items-center gap-2 text-green-600 opacity-0 group-hover:opacity-100 transition mt-auto">
-                                            <span class="text-sm font-semibold">View Events</span>
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                            </svg>
-                                        </div>
+                                        <h3 class="text-xs font-bold text-gray-900 group-hover:text-green-600 transition mb-1">Events</h3>
+                                        <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">Join our gatherings</p>
                                     </a>
-                                    <a href="{{ route('media') }}" class="group flex flex-col p-5 rounded-xl hover:bg-gradient-to-br hover:from-green-50 hover:to-blue-50 transition-all duration-300 border-2 border-transparent hover:border-green-200 {{ request()->routeIs('media') ? 'bg-gradient-to-br from-green-50 to-blue-50 border-green-200' : '' }}">
-                                        <div class="w-full h-32 rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition mb-4">
+                                    <a href="{{ route('media') }}" class="group flex flex-col p-3 rounded-lg hover:bg-gradient-to-br hover:from-green-50 hover:to-blue-50 transition-all duration-300 border border-transparent hover:border-green-200 {{ request()->routeIs('media') ? 'bg-gradient-to-br from-green-50 to-blue-50 border-green-200' : '' }}">
+                                        <div class="w-full h-16 rounded-lg overflow-hidden shadow-md group-hover:shadow-lg transition mb-2">
                                             <img src="{{ asset('images/07.jpg') }}" alt="Media" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                         </div>
-                                        <h3 class="text-lg font-bold text-gray-900 group-hover:text-green-600 transition mb-2">Media</h3>
-                                        <p class="text-sm text-gray-600 leading-relaxed mb-3">Photos, videos, and stories from our community events and activities.</p>
-                                        <div class="flex items-center gap-2 text-green-600 opacity-0 group-hover:opacity-100 transition mt-auto">
-                                            <span class="text-sm font-semibold">Browse</span>
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                            </svg>
-                                        </div>
+                                        <h3 class="text-xs font-bold text-gray-900 group-hover:text-green-600 transition mb-1">Media</h3>
+                                        <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">Photos & videos</p>
                                     </a>
-                                    <a href="{{ route('resources') }}" class="group flex flex-col p-5 rounded-xl hover:bg-gradient-to-br hover:from-green-50 hover:to-blue-50 transition-all duration-300 border-2 border-transparent hover:border-green-200 {{ request()->routeIs('resources') ? 'bg-gradient-to-br from-green-50 to-blue-50 border-green-200' : '' }}">
-                                        <div class="w-full h-32 rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition mb-4">
+                                    <a href="{{ route('resources') }}" class="group flex flex-col p-3 rounded-lg hover:bg-gradient-to-br hover:from-green-50 hover:to-blue-50 transition-all duration-300 border border-transparent hover:border-green-200 {{ request()->routeIs('resources') ? 'bg-gradient-to-br from-green-50 to-blue-50 border-green-200' : '' }}">
+                                        <div class="w-full h-16 rounded-lg overflow-hidden shadow-md group-hover:shadow-lg transition mb-2">
                                             <img src="{{ asset('images/08.jpg') }}" alt="Resources" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                         </div>
-                                        <h3 class="text-lg font-bold text-gray-900 group-hover:text-green-600 transition mb-2">Resources</h3>
-                                        <p class="text-sm text-gray-600 leading-relaxed mb-3">Download guides, manuals, and spiritual materials for your journey.</p>
-                                        <div class="flex items-center gap-2 text-green-600 opacity-0 group-hover:opacity-100 transition mt-auto">
-                                            <span class="text-sm font-semibold">Download</span>
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                            </svg>
-                                        </div>
+                                        <h3 class="text-xs font-bold text-gray-900 group-hover:text-green-600 transition mb-1">Resources</h3>
+                                        <p class="text-xs text-gray-600 leading-relaxed line-clamp-2">Download materials</p>
                                     </a>
                                 </div>
                             </div>

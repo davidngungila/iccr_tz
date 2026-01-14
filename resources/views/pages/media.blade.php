@@ -48,11 +48,11 @@
             <div class="text-center p-6 bg-white rounded-xl shadow-md border-2 border-gray-100 hover:shadow-lg transition">
                 <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2">50+</div>
                 <div class="text-sm md:text-base text-gray-600 font-medium">Videos</div>
-            </div>
+        </div>
             <div class="text-center p-6 bg-white rounded-xl shadow-md border-2 border-gray-100 hover:shadow-lg transition">
                 <div class="text-3xl md:text-4xl font-bold text-green-600 mb-2">100+</div>
                 <div class="text-sm md:text-base text-gray-600 font-medium">Testimonials</div>
-            </div>
+        </div>
             <div class="text-center p-6 bg-white rounded-xl shadow-md border-2 border-gray-100 hover:shadow-lg transition">
                 <div class="text-3xl md:text-4xl font-bold text-blue-600 mb-2">24/7</div>
                 <div class="text-sm md:text-base text-gray-600 font-medium">Access</div>
@@ -71,16 +71,16 @@
             <div class="inline-flex items-center gap-2 px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-semibold mb-6">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                </svg>
+                    </svg>
                 <span>Photo Gallery</span>
-            </div>
+                </div>
             <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
                 Our <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">Photo Gallery</span>
             </h2>
             <p class="text-xl text-gray-600 max-w-2xl mx-auto">
                 Capturing moments of worship, fellowship, and spiritual growth
             </p>
-        </div>
+                </div>
         
         <!-- Filter Buttons -->
         <div class="mb-8 flex flex-wrap justify-center gap-3">
@@ -99,7 +99,7 @@
             <button class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition" data-filter="campus">
                 Campus Chapters
             </button>
-        </div>
+            </div>
         
         <!-- Photo Grid -->
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
@@ -129,14 +129,14 @@
                     <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
                         <h3 class="font-bold text-sm mb-1">{{ $photo['title'] }}</h3>
                         <p class="text-xs text-gray-200">{{ $photo['date'] }}</p>
-                    </div>
                 </div>
+            </div>
                 <div class="absolute top-2 right-2">
                     <div class="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
                         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                        </svg>
-                    </div>
+                    </svg>
+                </div>
                 </div>
             </div>
             @endforeach
@@ -169,67 +169,220 @@
             <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
                 Video <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">Library</span>
             </h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                Watch recordings from our events, retreats, and teaching sessions
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-6">
+                Watch recordings from our events, retreats, and teaching sessions. All videos are available on our YouTube channels.
             </p>
+            
+            <!-- YouTube Channels Info -->
+            <div class="flex flex-col md:flex-row gap-4 justify-center items-center mb-12">
+                <a href="https://www.youtube.com/@karismatikikatolikiumojawa4252" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 px-6 py-3 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-700 transition shadow-lg hover:shadow-xl transform hover:scale-105">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    <span>Karismatiki Katoliki Umoja wa Vyuo</span>
+                    <svg class="w-4 h-4 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/@ccr_onlinetv9591" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 px-6 py-3 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-700 transition shadow-lg hover:shadow-xl transform hover:scale-105">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    <span>CCR OnlineTv</span>
+                    <svg class="w-4 h-4 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @php
-                $videos = [
-                    ['title' => 'Night of Praise - January 2025', 'description' => 'Full recording from our Night of Praise event in Dar es Salaam', 'duration' => '2:15:30', 'views' => '1.2K views'],
-                    ['title' => 'Open Gate Camp - March 2025', 'description' => 'Highlights from the Open Gate Camp in Moshi & Arusha', 'duration' => '45:20', 'views' => '856 views'],
-                    ['title' => 'Perfect Vision - April 2025', 'description' => 'Complete session from Perfect Vision event in Mbeya', 'duration' => '1:30:45', 'views' => '623 views'],
-                    ['title' => 'Usiku wa Sifa - May 2025', 'description' => 'Powerful worship night recording from Dar es Salaam', 'duration' => '1:45:10', 'views' => '1.5K views'],
-                    ['title' => 'NexGen Camp - June 2025', 'description' => 'Leadership training and retreat sessions', 'duration' => '3:20:15', 'views' => '980 views'],
-                    ['title' => 'Spiritual Retreat - December 2024', 'description' => 'Highlights from our regional spiritual camp', 'duration' => '1:15:30', 'views' => '1.8K views'],
-                    ['title' => 'Sermon Series - November 2024', 'description' => 'Teaching sessions on spiritual growth and discipleship', 'duration' => '50:45', 'views' => '1.1K views'],
-                    ['title' => 'Prayer Meeting - October 2024', 'description' => 'Weekly prayer meeting recording', 'duration' => '1:00:20', 'views' => '745 views'],
-                    ['title' => 'Annual Convention - July 2024', 'description' => 'Complete coverage of our annual convention', 'duration' => '4:30:00', 'views' => '2.3K views'],
-                ];
-            @endphp
+        <!-- YouTube Videos from Channels -->
+        <!-- Karismatiki Katoliki Umoja wa Vyuo Channel -->
+        <div class="mb-16">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="flex items-center gap-2 px-4 py-2 bg-red-100 text-red-700 rounded-lg font-semibold">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    <span>Karismatiki Katoliki Umoja wa Vyuo</span>
+        </div>
+                <a href="https://www.youtube.com/@karismatikikatolikiumojawa4252" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-600 hover:text-green-600 font-medium flex items-center gap-1">
+                    <span>View All Videos</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+                    </div>
             
-            @foreach($videos as $index => $video)
-            <div class="group bg-white rounded-2xl shadow-lg border-2 border-gray-100 overflow-hidden hover:shadow-2xl hover:border-green-300 transition-all duration-300 transform hover:-translate-y-2">
-                <div class="relative aspect-video bg-gradient-to-br from-green-600 to-blue-600 overflow-hidden">
-                    <img src="{{ asset('images/' . sprintf('%02d.jpg', (($index % 11) + 1))) }}" alt="{{ $video['title'] }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition"></div>
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition cursor-pointer">
-                            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
+            <!-- YouTube Channel Videos Grid -->
+            <div id="karismatiki-videos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @if(isset($karismatiki_videos) && count($karismatiki_videos) > 0)
+                    @foreach($karismatiki_videos as $video)
+                    <div class="group bg-white rounded-xl shadow-lg border-2 border-gray-100 overflow-hidden hover:shadow-2xl hover:border-green-300 transition-all duration-300">
+                        <div class="relative aspect-video bg-black">
+                            <iframe 
+                                class="w-full h-full" 
+                                src="https://www.youtube.com/embed/{{ $video['video_id'] }}?rel=0&modestbranding=1" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-semibold">Karismatiki Katoliki</span>
+                            </div>
+                            <h3 class="text-base font-bold text-gray-900 mb-1 group-hover:text-green-600 transition line-clamp-2">{{ $video['title'] ?? 'Video' }}</h3>
+                            <p class="text-xs text-gray-600 line-clamp-2">{{ $video['description'] ?? '' }}</p>
                         </div>
                     </div>
-                    <div class="absolute bottom-2 right-2 bg-black/70 backdrop-blur-sm px-2 py-1 rounded text-xs text-white font-semibold">
-                        {{ $video['duration'] }}
-                    </div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-green-600 transition">{{ $video['title'] }}</h3>
-                    <p class="text-sm text-gray-600 mb-3 leading-relaxed">{{ $video['description'] }}</p>
-                    <div class="flex items-center justify-between text-xs text-gray-500">
-                        <span class="flex items-center gap-1">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    @endforeach
+                @else
+                    <!-- Placeholder - will be replaced by JavaScript if needed -->
+                    <div class="col-span-full text-center py-8">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg">
+                            <svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
                             </svg>
-                            {{ $video['views'] }}
-                        </span>
-                        <a href="#" class="text-green-600 hover:text-green-700 font-semibold">Watch Now →</a>
+                            <span>Loading videos...</span>
+                        </div>
+                    </div>
+                @endif
+            </div>
+                </div>
+        
+        <!-- CCR OnlineTv Channel -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="flex items-center gap-2 px-4 py-2 bg-red-100 text-red-700 rounded-lg font-semibold">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    <span>CCR OnlineTv</span>
+                </div>
+                <a href="https://www.youtube.com/@ccr_onlinetv9591" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-600 hover:text-green-600 font-medium flex items-center gap-1">
+                    <span>View All Videos</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- YouTube Channel Videos Grid -->
+            <div id="ccr-videos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @if(isset($ccr_videos) && count($ccr_videos) > 0)
+                    @foreach($ccr_videos as $video)
+                    <div class="group bg-white rounded-xl shadow-lg border-2 border-gray-100 overflow-hidden hover:shadow-2xl hover:border-green-300 transition-all duration-300">
+                        <div class="relative aspect-video bg-black">
+                            <iframe 
+                                class="w-full h-full" 
+                                src="https://www.youtube.com/embed/{{ $video['video_id'] }}?rel=0&modestbranding=1" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-semibold">CCR OnlineTv</span>
+                            </div>
+                            <h3 class="text-base font-bold text-gray-900 mb-1 group-hover:text-green-600 transition line-clamp-2">{{ $video['title'] ?? 'Video' }}</h3>
+                            <p class="text-xs text-gray-600 line-clamp-2">{{ $video['description'] ?? '' }}</p>
+                        </div>
+                    </div>
+                    @endforeach
+                @else
+                    <!-- Placeholder - will be replaced by JavaScript if needed -->
+                    <div class="col-span-full text-center py-8">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg">
+                            <svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                            </svg>
+                            <span>Loading videos...</span>
+        </div>
+                    </div>
+                @endif
                     </div>
                 </div>
-            </div>
-            @endforeach
-        </div>
         
-        <div class="text-center mt-12">
-            <a href="#" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-xl font-bold text-lg hover:from-green-700 hover:to-blue-700 transition shadow-xl hover:shadow-2xl transform hover:scale-105">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-                <span>View More on YouTube</span>
-            </a>
+        <!-- Lord's Grace Praise Worship Team Channel -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="flex items-center gap-2 px-4 py-2 bg-red-100 text-red-700 rounded-lg font-semibold">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    <span>Lord's Grace Praise Worship Team</span>
+                </div>
+                <a href="https://www.youtube.com/@LORDSGRACEPRAISEWORSHIPTEAM" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-600 hover:text-green-600 font-medium flex items-center gap-1">
+                    <span>View All Videos</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- YouTube Channel Videos Grid -->
+            <div id="lords-grace-videos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @if(isset($lords_grace_videos) && count($lords_grace_videos) > 0)
+                    @foreach($lords_grace_videos as $video)
+                    <div class="group bg-white rounded-xl shadow-lg border-2 border-gray-100 overflow-hidden hover:shadow-2xl hover:border-green-300 transition-all duration-300">
+                        <div class="relative aspect-video bg-black">
+                            <iframe 
+                                class="w-full h-full" 
+                                src="https://www.youtube.com/embed/{{ $video['video_id'] }}?rel=0&modestbranding=1" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                loading="lazy">
+                            </iframe>
+            </div>
+                        <div class="p-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-semibold">Lord's Grace</span>
+                    </div>
+                            <h3 class="text-base font-bold text-gray-900 mb-1 group-hover:text-green-600 transition line-clamp-2">{{ $video['title'] ?? 'Video' }}</h3>
+                            <p class="text-xs text-gray-600 line-clamp-2">{{ $video['description'] ?? '' }}</p>
+                    </div>
+                </div>
+                    @endforeach
+                @else
+                    <!-- Placeholder - will be replaced by JavaScript if needed -->
+                    <div class="col-span-full text-center py-8">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg">
+                            <svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                            </svg>
+                            <span>Loading videos...</span>
+            </div>
+                    </div>
+                @endif
+                    </div>
+                </div>
+        
+        <div class="text-center">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="https://www.youtube.com/@karismatikikatolikiumojawa4252" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-xl font-bold text-lg hover:from-green-700 hover:to-blue-700 transition shadow-xl hover:shadow-2xl transform hover:scale-105">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    <span>Visit Karismatiki Katoliki Channel</span>
+                </a>
+                <a href="https://www.youtube.com/@ccr_onlinetv9591" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl font-bold text-lg hover:from-red-700 hover:to-red-800 transition shadow-xl hover:shadow-2xl transform hover:scale-105">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    <span>Visit CCR OnlineTv Channel</span>
+                </a>
+                <a href="https://www.youtube.com/@LORDSGRACEPRAISEWORSHIPTEAM" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl font-bold text-lg hover:from-purple-700 hover:to-purple-800 transition shadow-xl hover:shadow-2xl transform hover:scale-105">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    <span>Visit Lord's Grace Channel</span>
+                </a>
+            </div>
         </div>
     </div>
 </section>
@@ -251,8 +404,8 @@
             </h2>
             <p class="text-xl text-gray-600 max-w-2xl mx-auto">
                 Stories of transformation and growth from our community
-            </p>
-        </div>
+                </p>
+            </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @php
@@ -287,10 +440,10 @@
                         <div class="text-sm text-gray-600">{{ $testimonial['university'] }}</div>
                     </div>
                 </div>
-            </div>
+                    </div>
             @endforeach
-        </div>
-    </div>
+                    </div>
+                </div>
 </section>
 
 <!-- Recent News & Updates Section -->
@@ -310,8 +463,8 @@
             </h2>
             <p class="text-xl text-gray-600 max-w-2xl mx-auto">
                 Stay updated with our latest announcements and stories
-            </p>
-        </div>
+                </p>
+            </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @php
@@ -372,7 +525,7 @@
             <p class="text-xl text-green-100 max-w-2xl mx-auto">
                 Stay updated with our latest events, news, announcements, and spiritual resources
             </p>
-        </div>
+            </div>
         
         <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border-2 border-white/20">
             <form class="flex flex-col sm:flex-row gap-4 mb-6">
@@ -409,8 +562,8 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                 </svg>
-            </a>
-        </div>
+                </a>
+            </div>
     </div>
 </section>
 
@@ -487,6 +640,159 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
+});
+
+// YouTube Videos Loader - Fetches videos from channels
+document.addEventListener('DOMContentLoaded', function() {
+    // Channel URLs
+    const karismatikiChannelUrl = 'https://www.youtube.com/@karismatikikatolikiumojawa4252';
+    const ccrChannelUrl = 'https://www.youtube.com/@ccr_onlinetv9591';
+    
+    // Function to extract video ID from YouTube URL
+    function extractVideoId(url) {
+        if (!url) return null;
+        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+        const match = url.match(regExp);
+        return (match && match[2].length === 11) ? match[2] : null;
+    }
+    
+    // Function to create video card HTML
+    function createVideoCard(videoId, title, description, channel) {
+        if (!videoId) return '';
+        
+        return `
+            <div class="group bg-white rounded-xl shadow-lg border-2 border-gray-100 overflow-hidden hover:shadow-2xl hover:border-green-300 transition-all duration-300">
+                <div class="relative aspect-video bg-black">
+                    <iframe 
+                        class="w-full h-full" 
+                        src="https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-semibold">${channel}</span>
+                    </div>
+                    <h3 class="text-base font-bold text-gray-900 mb-1 group-hover:text-green-600 transition line-clamp-2">${title || 'Video'}</h3>
+                    <p class="text-xs text-gray-600 line-clamp-2">${description || ''}</p>
+                </div>
+            </div>
+        `;
+    }
+    
+    // Function to fetch videos from YouTube channel
+    async function loadVideosFromChannel(channelUrl, containerId, channelName) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        
+        // Check if videos are already loaded from backend
+        if (container.querySelector('iframe')) {
+            return; // Videos already loaded
+        }
+        
+        try {
+            // Try to get channel ID first, then fetch RSS feed
+            // For channels with @handle, we need to get the channel ID
+            // Using a CORS proxy or backend endpoint would be better
+            
+            // Method: Use YouTube RSS feed (requires channel ID)
+            // Since we have handles, we'll try to fetch using RSS2JSON service
+            // which can handle YouTube channel handles
+            
+            const channelHandle = channelUrl.split('@')[1] || channelUrl.split('/').pop();
+            
+            // Try RSS2JSON proxy service
+            const rssUrl = `https://www.youtube.com/feeds/videos.xml?user=${channelHandle}`;
+            const proxyUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+            
+            const response = await fetch(proxyUrl);
+            
+            if (response.ok) {
+                const data = await response.json();
+                if (data.items && data.items.length > 0) {
+                    container.innerHTML = '';
+                    data.items.slice(0, 9).forEach(item => {
+                        const videoId = extractVideoId(item.link);
+                        if (videoId) {
+                            const title = item.title || 'Video';
+                            const description = item.description ? item.description.replace(/<[^>]*>/g, '').substring(0, 120) + '...' : '';
+                            container.innerHTML += createVideoCard(videoId, title, description, channelName);
+                        }
+                    });
+                    return;
+                }
+            }
+            
+            // Alternative: Try with channel ID format
+            const rssUrl2 = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelHandle}`;
+            const proxyUrl2 = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl2)}`;
+            
+            const response2 = await fetch(proxyUrl2);
+            if (response2.ok) {
+                const data2 = await response2.json();
+                if (data2.items && data2.items.length > 0) {
+                    container.innerHTML = '';
+                    data2.items.slice(0, 9).forEach(item => {
+                        const videoId = extractVideoId(item.link);
+                        if (videoId) {
+                            const title = item.title || 'Video';
+                            const description = item.description ? item.description.replace(/<[^>]*>/g, '').substring(0, 120) + '...' : '';
+                            container.innerHTML += createVideoCard(videoId, title, description, channelName);
+                        }
+                    });
+                    return;
+                }
+            }
+            
+        } catch (error) {
+            console.log('Error fetching videos:', error);
+        }
+        
+        // If all methods fail, show channel link
+        const placeholder = container.querySelector('.text-center');
+        if (placeholder && !container.querySelector('iframe')) {
+            placeholder.innerHTML = `
+                <div class="bg-gradient-to-br from-blue-50 to-green-50 border-2 border-blue-200 rounded-xl p-8">
+                    <div class="text-center max-w-2xl mx-auto">
+                        <svg class="w-16 h-16 text-blue-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Videos from ${channelName}</h3>
+                        <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+                            Click below to visit the channel and watch all videos. To display videos here automatically, set up YouTube Data API v3.
+                        </p>
+                        <a href="${channelUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition shadow-lg hover:shadow-xl">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                            <span>Visit Channel on YouTube</span>
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+    }
+    
+    // Only load if containers are empty (no videos from backend)
+    const karismatikiContainer = document.getElementById('karismatiki-videos');
+    const ccrContainer = document.getElementById('ccr-videos');
+    const lordsGraceContainer = document.getElementById('lords-grace-videos');
+    const lordsGraceChannelUrl = 'https://www.youtube.com/@LORDSGRACEPRAISEWORSHIPTEAM';
+    
+    if (karismatikiContainer && !karismatikiContainer.querySelector('iframe')) {
+        loadVideosFromChannel(karismatikiChannelUrl, 'karismatiki-videos', 'Karismatiki Katoliki');
+    }
+    
+    if (ccrContainer && !ccrContainer.querySelector('iframe')) {
+        loadVideosFromChannel(ccrChannelUrl, 'ccr-videos', 'CCR OnlineTv');
+    }
+    
+    if (lordsGraceContainer && !lordsGraceContainer.querySelector('iframe')) {
+        loadVideosFromChannel(lordsGraceChannelUrl, 'lords-grace-videos', 'Lord\'s Grace Praise Worship Team');
+    }
 });
 </script>
 @endpush
