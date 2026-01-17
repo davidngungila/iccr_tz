@@ -25,3 +25,5 @@ If you have Mazzard fonts hosted on a CDN, update the URLs in `resources/views/l
 
 Until the font files are added, the website will use Inter as a fallback font.
 
+
+

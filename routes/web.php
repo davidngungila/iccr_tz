@@ -15,3 +15,4 @@ Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 Route::get('/terms', [PageController::class, 'terms'])->name('terms');
 Route::get('/privacy', [PageController::class, 'privacy'])->name('privacy');
 Route::get('/code-of-conduct', [PageController::class, 'codeOfConduct'])->name('code-of-conduct');
+Route::get('/graduates', [PageController::class, 'graduates'])->name('graduates');
